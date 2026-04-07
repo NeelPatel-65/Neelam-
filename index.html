@@ -1,0 +1,2240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="logo.png">
+  <title>Neelam Fibers — Surat, Gujarat</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    @font-face {
+      font-family: 'Bremen Bold';
+      src: url('Bremen Bold.otf') format('opentype');
+      font-weight: bold;
+      font-style: normal;
+    }
+
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --navy: #0A192F;
+      --navy2: #06101f;
+      --gold: #0056B3;
+      --gold2: #004494;
+      --cream: #F8F9FA;
+      --lightgrey: #AAAEB0;
+      --grey: #555555;
+      --text: #333333;
+      --white: #ffffff;
+      --accent-rgb: 0, 86, 179;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* body styling adjusted to prevent Google Translate from shifting the page down */
+    body {
+      font-family: 'Barlow', sans-serif;
+      background: var(--white);
+      color: var(--text);
+      overflow-x: hidden;
+      top: 0 !important;
+      position: static !important;
+    }
+
+    /* NAVBAR */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 5%;
+      background: white;
+      border-bottom: 1px solid white;
+      transition: background 0.4s, padding 0.4s, box-shadow 0.4s;
+    }
+
+    nav.scrolled {
+      background: white;
+      border-bottom: 1px solid white;
+      padding: 8px 5%;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .nav-logo-img {
+      height: 125px; margin: -20px 0;
+      border-radius: 4px;
+      padding: 2px;
+    }
+
+    .nav-logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+    }
+
+    .nav-logo-text span.name {
+      font-family: 'Bremen Bold', sans-serif;
+      font-weight: normal;
+      font-size: 1.45rem;
+      letter-spacing: 0.04em;
+      color: rgb(16, 39, 135);
+    }
+
+    .nav-logo-text span.tag {
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      color: rgba(10, 25, 47, 0.8);
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+
+    .nav-right-container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+
+    /* Nav top bar overflow changed to visible so the language dropdown doesn't get clipped */
+    .nav-top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      width: 100%;
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid rgba(10, 25, 47, 0.2);
+      transition: height 0.3s, opacity 0.3s, margin 0.3s, padding 0.3s;
+      height: 32px;
+      opacity: 1;
+      overflow: visible;
+    }
+
+    nav.scrolled .nav-top-bar {
+      height: 0;
+      opacity: 0;
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border: none;
+      overflow: hidden;
+    }
+
+    .nav-contact-links {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .nav-contact-links a {
+      color: var(--navy);
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s;
+    }
+
+    .nav-contact-links a:hover {
+      color: var(--gold);
+    }
+
+    .nav-social-links {
+      display: flex;
+      gap: 12px;
+      margin-left: 20px;
+      padding-left: 20px;
+      border-left: 1px solid rgba(10, 25, 47, 0.2);
+    }
+
+    .nav-social-links a {
+      color: var(--navy);
+      font-size: 0.9rem;
+      transition: 0.2s;
+    }
+
+    .nav-social-links a:hover {
+      color: var(--gold);
+      transform: translateY(-2px);
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 2.8rem;
+      align-items: center;
+      margin-bottom: 4px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--navy);
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 600;
+      transition: color 0.25s;
+      position: relative;
+    }
+
+    .nav-links a:hover {
+      color: var(--gold);
+    }
+
+    /* Dropdown Menu Links */
+    .dropdown-menu li a {
+      display: block;
+      padding: 12px 20px;
+      font-size: 0.8rem;
+      color: var(--navy);
+      letter-spacing: 0.05em;
+    }
+
+    .dropdown-menu li a:hover {
+      background: rgba(0, 86, 179, 0.1);
+      color: var(--gold);
+      padding-left: 25px;
+    }
+
+    .dropdown {
+      position: relative;
+      padding-bottom: 10px;
+      margin-bottom: -10px;
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: -20px;
+      background: #0A192F;
+      list-style: none;
+      padding: 10px 0;
+      border: 1px solid rgba(0, 86, 179, 0.2);
+      border-top: 3px solid var(--gold);
+      min-width: 260px;
+      z-index: 1000;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .dropdown:hover .dropdown-menu {
+      display: block;
+      animation: fadeUpDrop 0.2s ease;
+    }
+
+    .dropdown-menu li a {
+      display: block;
+      padding: 12px 20px;
+      font-size: 0.8rem;
+      color: #ffffff;
+      letter-spacing: 0.05em;
+    }
+
+    .dropdown-menu li a::after {
+      display: none;
+    }
+
+    .dropdown-menu li a:hover {
+      background: rgba(0, 86, 179, 0.1);
+      color: #ffffff;
+      padding-left: 25px;
+    }
+
+    @keyframes fadeUpDrop {
+      from {
+        opacity: 0;
+        transform: translateY(5px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .nav-links .cta-btn {
+      background: var(--gold);
+      color: #ffffff;
+      padding: 0.6rem 1.6rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      transition: background 0.25s;
+      border-radius: 4px;
+    }
+
+    .nav-links .cta-btn::after {
+      display: none;
+    }
+
+    .nav-links .cta-btn:hover {
+      background: var(--gold2);
+      color: #ffffff;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: #ffffff;
+      transition: all 0.3s;
+    }
+
+    /* CUSTOM B2B LANGUAGE SELECTOR WITH SEARCH */
+    .b2b-lang-selector {
+      position: relative;
+      display: inline-block;
+      margin-right: 15px;
+    }
+
+    .b2b-lang-btn {
+      background: transparent;
+      border: 1px solid rgba(10, 25, 47, 0.2);
+      border-radius: 4px;
+      padding: 4px 12px;
+      font-family: inherit;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--navy);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s;
+    }
+
+    .b2b-lang-btn:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    .b2b-lang-btn i {
+      font-size: 0.9rem;
+    }
+
+    .b2b-lang-dropdown {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      margin-top: 8px;
+      background: #ffffff;
+      border: 1px solid #ced4da;
+      border-radius: 4px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+      width: 240px;
+      z-index: 1001;
+      overflow: hidden;
+    }
+
+    .b2b-lang-dropdown.show {
+      display: block;
+      animation: fadeUpDrop 0.2s ease;
+    }
+
+    .lang-search-box {
+      padding: 10px 15px;
+      border-bottom: 1px solid #eee;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #f8f9fa;
+    }
+
+    .lang-search-box input {
+      border: none;
+      outline: none;
+      background: transparent;
+      width: 100%;
+      font-size: 0.85rem;
+      font-family: inherit;
+      color: #333;
+    }
+
+    .lang-search-box i {
+      color: #888;
+      font-size: 0.85rem;
+    }
+
+    .b2b-lang-list {
+      max-height: 280px;
+      overflow-y: auto;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .b2b-lang-list li {
+      padding: 10px 15px;
+      font-size: 0.85rem;
+      color: #333;
+      cursor: pointer;
+      border-bottom: 1px solid #f9f9f9;
+      transition: background 0.2s;
+      font-weight: 500;
+    }
+
+    .b2b-lang-list li:hover {
+      background: rgba(var(--accent-rgb), 0.08);
+      color: var(--gold);
+      padding-left: 18px;
+    }
+
+    /* Scrollbar styling for language list */
+    .b2b-lang-list::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .b2b-lang-list::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+
+    .b2b-lang-list::-webkit-scrollbar-thumb {
+      background: #ccc;
+      border-radius: 4px;
+    }
+
+    .b2b-lang-list::-webkit-scrollbar-thumb:hover {
+      background: #aaa;
+    }
+
+    /* HIDE DEFAULT GOOGLE ELEMENTS ENTIRELY */
+    #google_translate_element {
+      display: none !important;
+    }
+
+    .skiptranslate iframe {
+      display: none !important;
+    }
+
+    .goog-te-banner-frame {
+      display: none !important;
+    }
+
+    .goog-tooltip {
+      display: none !important;
+    }
+
+    .goog-tooltip:hover {
+      display: none !important;
+    }
+
+    .goog-text-highlight {
+      background-color: transparent !important;
+      border: none !important;
+      box-shadow: none !important;
+    }
+
+    /* HERO */
+    #home {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background: url('factory_bg.png') center/cover no-repeat;
+    }
+
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(10, 25, 47, 0.7);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 10;
+      padding: 0 8%;
+      max-width: 750px;
+      animation: heroFadeUp 0.8s ease 0.2s both;
+    }
+
+    @keyframes heroFadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero-title {
+      font-size: clamp(2.8rem, 5.5vw, 4.5rem);
+      font-weight: 800;
+      line-height: 1.1;
+      color: #ffffff;
+      margin-bottom: 1.5rem;
+      text-transform: uppercase;
+    }
+
+    .hero-title em {
+      color: #8AB4F8;
+      font-style: normal;
+    }
+
+    .hero-sub {
+      font-size: 1.1rem;
+      color: rgba(255, 255, 255, 0.85);
+      line-height: 1.75;
+      font-weight: 400;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: #ffffff;
+      padding: 0.9rem 2.2rem;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.3s;
+      border-radius: 4px;
+    }
+
+    .btn-primary:hover {
+      background: var(--gold2);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: #ffffff;
+      padding: 0.9rem 2.2rem;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 2px solid #ffffff;
+      border-radius: 4px;
+      transition: all 0.3s;
+    }
+
+    .btn-outline:hover {
+      background: #ffffff;
+      color: #0A192F;
+    }
+
+    .hero-stats {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 10;
+      display: flex;
+      background: rgba(10, 25, 47, 0.95);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .stat-item {
+      flex: 1;
+      padding: 1rem 2rem;
+      border-right: 1px solid rgba(255, 255, 255, 0.1);
+      text-align: center;
+    }
+
+    .stat-item:last-child {
+      border-right: none;
+    }
+
+    .stat-num {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #8AB4F8;
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.7);
+      margin-top: 5px;
+    }
+
+    /* SECTIONS */
+    section {
+      width: 100%;
+    }
+
+    .section-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 5%;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .section-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .section-eyebrow::before,
+    .section-eyebrow::after {
+      content: '';
+      display: block;
+      width: 30px;
+      height: 2px;
+      background: var(--gold);
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 800;
+      line-height: 1.2;
+      text-transform: uppercase;
+      color: #0A192F;
+    }
+
+    .section-title em {
+      color: var(--gold);
+      font-style: normal;
+    }
+
+    .section-desc {
+      margin-top: 1rem;
+      font-size: 1.05rem;
+      color: var(--grey);
+      font-weight: 400;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.6;
+    }
+
+    /* PRODUCTS */
+    #products {
+      background: var(--white);
+      padding: 7rem 0 0;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 4px;
+      background: var(--lightgrey);
+      border: 4px solid var(--lightgrey);
+    }
+
+    .product-card {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      cursor: pointer;
+      display: block;
+      text-decoration: none;
+      background: #0A192F;
+    }
+
+    .product-bg {
+      position: absolute;
+      inset: 0;
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+      transition: transform 0.4s ease;
+    }
+
+    .product-card:hover .product-bg {
+      transform: scale(1.03);
+    }
+
+    .product-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10, 25, 47, 0.95) 0%, rgba(10, 25, 47, 0.4) 50%, transparent 100%);
+      transition: background 0.3s;
+    }
+
+    .product-card:hover .product-overlay {
+      background: linear-gradient(to top, rgba(10, 25, 47, 0.95) 0%, rgba(0, 86, 179, 0.5) 70%, transparent 100%);
+    }
+
+    .product-content {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 2rem;
+    }
+
+    .product-num {
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      color: #8AB4F8;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .product-name {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1.2;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+    }
+
+    .product-detail {
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.85);
+      max-width: 320px;
+      line-height: 1.5;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, opacity 0.3s ease;
+      opacity: 0;
+    }
+
+    .product-card:hover .product-detail {
+      max-height: 100px;
+      opacity: 1;
+      margin-bottom: 1rem;
+    }
+
+    .product-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: #0A192F;
+      background: #ffffff;
+      padding: 6px 12px;
+      border-radius: 3px;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all 0.3s ease;
+    }
+
+    .product-card:hover .product-link {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .product-link:hover {
+      background: var(--gold);
+      color: #ffffff;
+    }
+
+    .prod-1 .product-bg {
+      background-image: url('sdy-removebg-preview.png');
+    }
+
+    .prod-2 .product-bg {
+      background-image: url('bright-yarn-removebg-preview.png');
+    }
+
+    .prod-3 .product-bg {
+      background-image: url('full-dull-yarn-removebg-preview.png');
+    }
+
+    .prod-4 .product-bg {
+      background-image: url('twisted-yarn-removebg-preview.png');
+    }
+
+    .prod-5 .product-bg {
+      background-image: url('doubler-yarn-removebg-preview.png');
+    }
+
+    .prod-6 .product-bg {
+      background-image: url('space-dyed-yarn-removebg-preview.png');
+    }
+
+    /* ABOUT */
+    #about {
+      background: var(--white);
+      padding: 7rem 0;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: center;
+    }
+
+    .about-visual {
+      position: relative;
+    }
+
+    .about-img-main {
+      width: 100%;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      background: url('aboutusimage.png') center/cover no-repeat;
+      position: relative;
+      z-index: 1;
+      border: 8px solid var(--white);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .about-img-badge {
+      position: absolute;
+      bottom: 2rem;
+      left: -2.5rem;
+      background: var(--gold);
+      color: #ffffff;
+      padding: 1.5rem;
+      z-index: 2;
+      border-radius: 4px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    }
+
+    .about-img-badge .badge-num {
+      font-size: 2.5rem;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .about-img-badge .badge-text {
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-top: 5px;
+    }
+
+    .about-text p {
+      color: var(--text);
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+      font-weight: 400;
+      font-size: 1rem;
+    }
+
+    .about-text p:first-of-type {
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    .about-features {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+    }
+
+    .about-feat {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .feat-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--cream);
+      border: 1px solid var(--lightgrey);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 1.2rem;
+      color: var(--gold);
+    }
+
+    .feat-text strong {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #0A192F;
+      margin-bottom: 2px;
+    }
+
+    .feat-text span {
+      font-size: 0.8rem;
+      color: var(--grey);
+    }
+
+    /* CERTIFICATION */
+    #certification {
+      background: var(--cream);
+      padding: 7rem 0;
+    }
+
+    .cert-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .cert-left .section-title {
+      text-align: left;
+    }
+
+    .cert-left .section-eyebrow {
+      justify-content: flex-start;
+    }
+
+    .cert-left .section-eyebrow::before {
+      display: none;
+    }
+
+    .cert-left p {
+      color: var(--text);
+      line-height: 1.7;
+      margin: 1.5rem 0;
+      font-weight: 400;
+      font-size: 1rem;
+    }
+
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    .cert-card {
+      background: var(--white);
+      border: 1px solid var(--lightgrey);
+      padding: 2rem;
+      border-radius: 4px;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cert-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--gold);
+      transform: scaleY(0);
+      transform-origin: bottom;
+      transition: transform 0.3s;
+    }
+
+    .cert-card:hover {
+      background: var(--white);
+      border-color: var(--gold);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+    }
+
+    .cert-card:hover::before {
+      transform: scaleY(1);
+    }
+
+    .cert-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .cert-name {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: #0A192F;
+      margin-bottom: 0.5rem;
+    }
+
+    .cert-body {
+      font-size: 0.85rem;
+      color: var(--grey);
+      line-height: 1.6;
+    }
+
+    .cert-badge {
+      display: inline-block;
+      margin-top: 1rem;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--gold);
+      background: var(--cream);
+      border: 1px solid var(--lightgrey);
+      padding: 4px 12px;
+      border-radius: 2px;
+    }
+
+    /* Customers Section Styles */
+    .customers-section {
+      text-align: center;
+      padding: 50px 20px;
+      background-color: #ffffff;
+    }
+
+    .customers-section h2 {
+      font-size: 2rem;
+      color: #333333;
+      margin-bottom: 30px;
+    }
+
+    .flag-grid {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      max-width: 900px;
+      /* Keeps the 10 flags centered nicely */
+      margin: 0 auto;
+    }
+
+    .flag-item img {
+      width: 80px;
+      height: auto;
+      border: 1px solid #eaeaea;
+      border-radius: 4px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    /* Hover effect */
+    .flag-item img:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    /* CONTACT */
+    #contact {
+      background: var(--white);
+      padding: 7rem 0 0;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 5rem;
+      padding-bottom: 5rem;
+    }
+
+    .contact-info .section-title {
+      text-align: left;
+    }
+
+    .contact-info .section-eyebrow {
+      justify-content: flex-start;
+    }
+
+    .contact-info .section-eyebrow::before {
+      display: none;
+    }
+
+    .contact-info p {
+      color: var(--grey);
+      font-weight: 400;
+      line-height: 1.7;
+      margin: 1.5rem 0;
+      font-size: 1rem;
+    }
+
+    .contact-items {
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+
+    .contact-item-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--cream);
+      border: 1px solid var(--lightgrey);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+      color: var(--gold);
+    }
+
+    .contact-item-body strong {
+      display: block;
+      color: #0A192F;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 3px;
+    }
+
+    .contact-item-body span {
+      color: var(--grey);
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    .contact-form-wrap {
+      background: var(--cream);
+      border: 1px solid var(--lightgrey);
+      border-radius: 4px;
+      padding: 3rem;
+    }
+
+    .form-title {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: #0A192F;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+    }
+
+    .form-sub {
+      font-size: 0.9rem;
+      color: var(--grey);
+      margin-bottom: 2rem;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .form-group label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: #0A192F;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: var(--white);
+      border: 1px solid #ced4da;
+      color: var(--text);
+      padding: 0.8rem 1rem;
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.95rem;
+      border-radius: 4px;
+      outline: none;
+      transition: border-color 0.2s;
+      width: 100%;
+    }
+
+    .form-group select {
+      appearance: none;
+      cursor: pointer;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.1);
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: #adb5bd;
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .form-full {
+      grid-column: 1 / -1;
+    }
+
+    .form-submit {
+      margin-top: 1rem;
+      background: var(--gold);
+      color: #ffffff;
+      padding: 1rem 2.5rem;
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.3s;
+      width: 100%;
+    }
+
+    .form-submit:hover {
+      background: var(--gold2);
+    }
+
+    /* ANIMATIONS */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .fade-up-d1 {
+      transition-delay: 0.1s;
+    }
+
+    .fade-up-d2 {
+      transition-delay: 0.2s;
+    }
+
+    .fade-up-d3 {
+      transition-delay: 0.3s;
+    }
+
+    .fade-up-d4 {
+      transition-delay: 0.4s;
+    }
+
+    /* RESPONSIVENESS */
+    @media (max-width: 1100px) {
+      .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 900px) {
+      .products-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-grid,
+      .cert-layout,
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+
+      .about-img-badge {
+        left: 1rem;
+      }
+
+      .nav-top-bar,
+      .nav-links {
+        display: none;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .nav-right-container {
+        justify-content: center;
+      }
+
+      .hero-content {
+        padding: 0 6%;
+      }
+
+      .stat-label {
+        font-size: 0.65rem;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .cert-grid {
+        grid-template-columns: 1fr;
+      }
+
+      footer>.footer-inner {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      footer>.footer-inner>.footer-col {
+        min-width: 100%;
+        margin-bottom: 2rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-stats {
+        flex-direction: column;
+      }
+
+      .stat-item {
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+    }
+
+    /* Mobile Nav */
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 998;
+      background: #0A192F;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5rem;
+    }
+
+    .mobile-nav.open {
+      display: flex;
+    }
+
+    .mobile-nav a {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #ffffff;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .mobile-nav a:hover {
+      color: var(--gold);
+    }
+
+    .close-nav {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      background: none;
+      border: none;
+      color: #ffffff;
+      font-size: 2.5rem;
+      cursor: pointer;
+    }
+
+    /* WhatsApp Widget */
+    .whatsapp-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #25D366;
+      color: white;
+      border: none;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      z-index: 1000;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .whatsapp-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
+    }
+
+    .whatsapp-popup {
+      position: fixed;
+      bottom: 90px;
+      right: 20px;
+      width: 300px;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      z-index: 1000;
+      overflow: hidden;
+      font-family: 'Barlow', sans-serif;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .popup-header {
+      background-color: #075E54;
+      color: white;
+      padding: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: bold;
+    }
+
+    .close-btn {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+      line-height: 1;
+    }
+
+    .popup-body {
+      padding: 20px;
+      text-align: center;
+      background-color: #ECE5DD;
+    }
+
+    .popup-body p {
+      margin-top: 0;
+      color: #333;
+      background: white;
+      padding: 10px;
+      border-radius: 8px;
+      text-align: left;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+      font-size: 0.9rem;
+    }
+
+    .start-chat-btn {
+      display: inline-block;
+      background-color: #25D366;
+      color: white;
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 20px;
+      margin-top: 15px;
+      font-weight: bold;
+      transition: background-color 0.2s ease;
+      font-size: 0.95rem;
+    }
+
+    .start-chat-btn:hover {
+      background-color: #1EBE57;
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav id="navbar">
+    <a href="#home" class="nav-logo-container">
+      <img src="logo.png" alt="Neelam Fibers Logo" class="nav-logo-img" onerror="this.style.display='none'">
+      <div class="nav-logo-text">
+        <span class="name">Neelam Fibers</span>
+        <span class="tag">Surat, Gujarat — Since 1992</span>
+      </div>
+    </a>
+
+    <div class="nav-right-container">
+      <div class="nav-top-bar">
+        <div class="nav-contact-links">
+
+          <div class="b2b-lang-selector">
+            <button id="custom-lang-btn" class="b2b-lang-btn">
+              <i class="fa-solid fa-globe"></i> <span id="active-lang">English</span> <i
+                class="fa-solid fa-chevron-down" style="font-size: 0.7rem; margin-left: 4px;"></i>
+            </button>
+            <div id="custom-lang-dropdown" class="b2b-lang-dropdown">
+              <div class="lang-search-box">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="custom-lang-search" placeholder="Search language...">
+              </div>
+              <ul class="b2b-lang-list">
+                <li data-lang="af">Afrikaans</li>
+                <li data-lang="sq">Albanian</li>
+                <li data-lang="am">Amharic</li>
+                <li data-lang="ar">Arabic (العربية)</li>
+                <li data-lang="hy">Armenian</li>
+                <li data-lang="az">Azerbaijani</li>
+                <li data-lang="eu">Basque</li>
+                <li data-lang="be">Belarusian</li>
+                <li data-lang="bn">Bengali</li>
+                <li data-lang="bs">Bosnian</li>
+                <li data-lang="bg">Bulgarian</li>
+                <li data-lang="ca">Catalan</li>
+                <li data-lang="ceb">Cebuano</li>
+                <li data-lang="ny">Chichewa</li>
+                <li data-lang="zh-CN">Chinese Simplified (中文)</li>
+                <li data-lang="zh-TW">Chinese Traditional (繁體中文)</li>
+                <li data-lang="co">Corsican</li>
+                <li data-lang="hr">Croatian</li>
+                <li data-lang="cs">Czech</li>
+                <li data-lang="da">Danish</li>
+                <li data-lang="nl">Dutch</li>
+                <li data-lang="en">English</li>
+                <li data-lang="eo">Esperanto</li>
+                <li data-lang="et">Estonian</li>
+                <li data-lang="tl">Filipino</li>
+                <li data-lang="fi">Finnish</li>
+                <li data-lang="fr">French (Français)</li>
+                <li data-lang="fy">Frisian</li>
+                <li data-lang="gl">Galician</li>
+                <li data-lang="ka">Georgian</li>
+                <li data-lang="de">German (Deutsch)</li>
+                <li data-lang="el">Greek</li>
+                <li data-lang="gu">Gujarati</li>
+                <li data-lang="ht">Haitian Creole</li>
+                <li data-lang="ha">Hausa</li>
+                <li data-lang="haw">Hawaiian</li>
+                <li data-lang="iw">Hebrew</li>
+                <li data-lang="hi">Hindi (हिन्दी)</li>
+                <li data-lang="hmn">Hmong</li>
+                <li data-lang="hu">Hungarian</li>
+                <li data-lang="is">Icelandic</li>
+                <li data-lang="ig">Igbo</li>
+                <li data-lang="id">Indonesian</li>
+                <li data-lang="ga">Irish</li>
+                <li data-lang="it">Italian (Italiano)</li>
+                <li data-lang="ja">Japanese (日本語)</li>
+                <li data-lang="jw">Javanese</li>
+                <li data-lang="kn">Kannada</li>
+                <li data-lang="kk">Kazakh</li>
+                <li data-lang="km">Khmer</li>
+                <li data-lang="rw">Kinyarwanda</li>
+                <li data-lang="ko">Korean (한국어)</li>
+                <li data-lang="ku">Kurdish (Kurmanji)</li>
+                <li data-lang="ky">Kyrgyz</li>
+                <li data-lang="lo">Lao</li>
+                <li data-lang="la">Latin</li>
+                <li data-lang="lv">Latvian</li>
+                <li data-lang="lt">Lithuanian</li>
+                <li data-lang="lb">Luxembourgish</li>
+                <li data-lang="mk">Macedonian</li>
+                <li data-lang="mg">Malagasy</li>
+                <li data-lang="ms">Malay</li>
+                <li data-lang="ml">Malayalam</li>
+                <li data-lang="mt">Maltese</li>
+                <li data-lang="mi">Maori</li>
+                <li data-lang="mr">Marathi</li>
+                <li data-lang="mn">Mongolian</li>
+                <li data-lang="my">Myanmar (Burmese)</li>
+                <li data-lang="ne">Nepali</li>
+                <li data-lang="no">Norwegian</li>
+                <li data-lang="or">Odia (Oriya)</li>
+                <li data-lang="ps">Pashto</li>
+                <li data-lang="fa">Persian</li>
+                <li data-lang="pl">Polish</li>
+                <li data-lang="pt">Portuguese (Português)</li>
+                <li data-lang="pa">Punjabi</li>
+                <li data-lang="ro">Romanian</li>
+                <li data-lang="ru">Russian (Русский)</li>
+                <li data-lang="sm">Samoan</li>
+                <li data-lang="gd">Scots Gaelic</li>
+                <li data-lang="sr">Serbian</li>
+                <li data-lang="st">Sesotho</li>
+                <li data-lang="sn">Shona</li>
+                <li data-lang="sd">Sindhi</li>
+                <li data-lang="si">Sinhala</li>
+                <li data-lang="sk">Slovak</li>
+                <li data-lang="sl">Slovenian</li>
+                <li data-lang="so">Somali</li>
+                <li data-lang="es">Spanish (Español)</li>
+                <li data-lang="su">Sundanese</li>
+                <li data-lang="sw">Swahili</li>
+                <li data-lang="sv">Swedish</li>
+                <li data-lang="tg">Tajik</li>
+                <li data-lang="ta">Tamil</li>
+                <li data-lang="tt">Tatar</li>
+                <li data-lang="te">Telugu</li>
+                <li data-lang="th">Thai</li>
+                <li data-lang="tr">Turkish (Türkçe)</li>
+                <li data-lang="tk">Turkmen</li>
+                <li data-lang="uk">Ukrainian</li>
+                <li data-lang="ur">Urdu</li>
+                <li data-lang="ug">Uyghur</li>
+                <li data-lang="uz">Uzbek</li>
+                <li data-lang="vi">Vietnamese (Tiếng Việt)</li>
+                <li data-lang="cy">Welsh</li>
+                <li data-lang="xh">Xhosa</li>
+                <li data-lang="yi">Yiddish</li>
+                <li data-lang="yo">Yoruba</li>
+                <li data-lang="zu">Zulu</li>
+              </ul>
+            </div>
+          </div>
+          <a href="https://wa.me/919825127951" target="_blank"><i class="fa-brands fa-whatsapp"></i> +91 98251 27951</a>
+          <a href="mailto:neelamfibers@gmail.com"><i class="fa-solid fa-envelope"></i> neelamfibers@gmail.com</a>
+        </div>
+        <div class="nav-social-links">
+          <a href="https://www.facebook.com/neelam.fibers/" target="_blank" aria-label="Facebook"><i
+              class="fa-brands fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/neelam.fibers" target="_blank" aria-label="Instagram"><i
+              class="fa-brands fa-instagram"></i></a>
+          <a href="https://www.linkedin.com/company/neelam-fibers/" target="_blank" aria-label="LinkedIn"><i
+              class="fa-brands fa-linkedin-in"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+        </div>
+      </div>
+
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li class="dropdown">
+          <a href="#products">Products ▾</a>
+          <ul class="dropdown-menu">
+            <li><a href="polyester-semi-dull-yarn.html">Polyester Semi Dull Yarn</a></li>
+            <li><a href="polyester-bright-yarn.html">Polyester Bright Yarn</a></li>
+            <li><a href="polyester-full-dull-yarn.html">Polyester Full Dull Yarn</a></li>
+            <li><a href="polyester-twisted-yarn.html">Polyester Twisted Yarn</a></li>
+            <li><a href="polyester-doubler-yarn.html">Polyester Doubler Yarn</a></li>
+            <li><a href="polyester-space-dyed-yarn.html">Polyester Space Dyed Yarn</a></li>
+          </ul>
+        </li>
+        <li><a href="#certification">Certification</a></li>
+        <li><a href="blogs.html">Blogs</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#contact" class="cta-btn">Contact Us</a></li>
+      </ul>
+    </div>
+
+    <div class="hamburger" onclick="openMobileNav()">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <div class="mobile-nav" id="mobileNav">
+    <button class="close-nav" onclick="closeMobileNav()">✕</button>
+    <a href="#home" onclick="closeMobileNav()">Home</a>
+    <a href="#products" onclick="closeMobileNav()">Products</a>
+    <a href="#certification" onclick="closeMobileNav()">Certification</a>
+    <a href="blogs.html" onclick="closeMobileNav()">Blogs</a>
+    <a href="#about" onclick="closeMobileNav()">About Us</a>
+    <a href="#contact" onclick="closeMobileNav()">Contact Us</a>
+
+    <div style="margin-top: 2rem; display: flex; flex-direction: column; align-items: center; gap: 15px;">
+      <a href="https://wa.me/919825127951"
+        style="font-size: 0.95rem; text-transform: none; color: rgba(255,255,255,0.8); font-weight: 500;">
+        <i class="fa-brands fa-whatsapp" style="color: #25D366; margin-right: 5px;"></i> +91 98251 27951
+      </a>
+      <a href="mailto:neelamfibers@gmail.com"
+        style="font-size: 0.95rem; text-transform: none; color: rgba(255,255,255,0.8); font-weight: 500;">
+        <i class="fa-solid fa-envelope" style="color: #8AB4F8; margin-right: 5px;"></i> neelamfibers@gmail.com
+      </a>
+      <div style="display: flex; gap: 20px; margin-top: 10px;">
+        <a href="https://www.facebook.com/neelam.fibers/" target="_blank"
+          style="font-size: 1.3rem; color: rgba(255,255,255,0.8);"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/neelam.fibers" target="_blank"
+          style="font-size: 1.3rem; color: rgba(255,255,255,0.8);"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/company/neelam-fibers/" target="_blank"
+          style="font-size: 1.3rem; color: rgba(255,255,255,0.8);"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="#" style="font-size: 1.3rem; color: rgba(255,255,255,0.8);"><i class="fa-brands fa-twitter"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <section id="home">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <h1 class="hero-title">Your Trusted <br>Yarn Partner <br>Since 1992</h1>
+      <br><br>
+      <a href="#products" class="btn-primary">Explore Catalog</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-num">30+</div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">5000</div>
+        <div class="stat-label">MT / Annum Capacity</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">1500+</div>
+        <div class="stat-label">Colour Shades</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">WORLDWIDE</div>
+        <div class="stat-label">Delivery</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="products">
+    <div class="section-inner">
+      <div class="section-header fade-up">
+        <div class="section-eyebrow">Our Catalog</div>
+        <h2 class="section-title"> Product Range</h2>
+        <p class="section-desc">Industrial-grade polyester yarns engineered for every textile application — from fashion
+          fabrics to technical textiles.</p>
+        <div class="divider"></div>
+      </div>
+    </div>
+    <div class="products-grid">
+      <a href="polyester-semi-dull-yarn.html" class="product-card prod-1 fade-up">
+        <div class="product-bg"></div>
+        <div class="product-overlay"></div>
+        <div class="product-content">
+          <div class="product-num">01 / Specification</div>
+          <div class="product-name">Polyester<br>Semi Dull Yarn</div>
+          <div class="product-detail">Subtle matte finish ideal for weaving & knitting. Excellent dye uptake with
+            minimal sheen for versatile fabric applications.</div><span class="product-link">View Specifications</span>
+        </div>
+      </a>
+      <a href="polyester-bright-yarn.html" class="product-card prod-2 fade-up fade-up-d1">
+        <div class="product-bg"></div>
+        <div class="product-overlay"></div>
+        <div class="product-content">
+          <div class="product-num">02 / Specification</div>
+          <div class="product-name">Polyester<br>Bright Yarn</div>
+          <div class="product-detail">High-lustre trilobal bright filament with brilliant sheen. Perfect for luxury
+            fabrics, sarees, and decorative textiles.</div><span class="product-link">View Specifications</span>
+        </div>
+      </a>
+      <a href="polyester-full-dull-yarn.html" class="product-card prod-3 fade-up fade-up-d2">
+        <div class="product-bg"></div>
+        <div class="product-overlay"></div>
+        <div class="product-content">
+          <div class="product-num">03 / Specification</div>
+          <div class="product-name">Polyester<br>Full Dull Yarn</div>
+          <div class="product-detail">Zero-sheen matte finish for cotton-like aesthetics. Ideal for suiting, shirting,
+            and applications requiring no lustre.</div><span class="product-link">View Specifications</span>
+        </div>
+      </a>
+      <a href="polyester-twisted-yarn.html" class="product-card prod-4 fade-up fade-up-d3">
+        <div class="product-bg"></div>
+        <div class="product-overlay"></div>
+        <div class="product-content">
+          <div class="product-num">04 / Specification</div>
+          <div class="product-name">Polyester<br>Twisted Yarn</div>
+          <div class="product-detail">High-twist construction for superior strength & texture. Engineered for crepe
+            fabrics, embroidery, and technical textiles.</div><span class="product-link">View Specifications</span>
+        </div>
+      </a>
+      <a href="polyester-doubler-yarn.html" class="product-card prod-5 fade-up fade-up-d4">
+        <div class="product-bg"></div>
+        <div class="product-overlay"></div>
+        <div class="product-content">
+          <div class="product-num">05 / Specification</div>
+          <div class="product-name">Polyester<br>Doubler Yarn</div>
+          <div class="product-detail">Two or more plies combined for enhanced bulk, strength & coverage. Ideal for heavy
+            fabrics, upholstery, and carpets.</div><span class="product-link">View Specifications</span>
+        </div>
+      </a>
+      <a href="polyester-space-dyed-yarn.html" class="product-card prod-6 fade-up">
+        <div class="product-bg"></div>
+        <div class="product-overlay"></div>
+        <div class="product-content">
+          <div class="product-num">06 / Specification</div>
+          <div class="product-name">Polyester<br>Space Dyed Yarn</div>
+          <div class="product-detail">Multi-colour dyed segments creating unique patterns. Produces stunning multi-tone
+            effects for carpets, rugs & fashion knits.</div><span class="product-link">View Specifications</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="section-inner">
+      <div class="about-grid">
+        <div class="about-visual fade-up">
+          <div class="about-img-main"></div>
+          <div class="about-img-badge">
+            <div class="badge-num">30+</div>
+            <div class="badge-text">Years in<br>Industry</div>
+          </div>
+        </div>
+        <div class="about-text fade-up fade-up-d2">
+          <div class="section-eyebrow" style="justify-content:flex-start;"><span
+              style="width:30px;height:2px;background:var(--gold);display:block;"></span>Company Profile</div>
+          <h2 class="section-title" style="text-align:left; margin-top:0.5rem;">Rooted in Surat,<br><em>Supplying
+              Globally</em></h2>
+          <p><b style="color:#0A192F">NEELAM FIBERS</b> (Khodiyar Group of Industries) started the operation in the year 1992 in manufacturing of Texturised Yarn. Later in the Year 2001 went for forward integration in the field of Dyed Yarn production. Presently production achieved up to 5000 MT per annum. Neelam offering outstanding Quality standards in Bright filament, Textured, Twisting, Doubling and High bulk Dyed Yarn to seeking Weaving (Suiting, Shirting, Sarees, Dress Materials) Embroidery, Knitting, Home Furnishing, Tapes,Lables, Carpets, Jari Covering, Shoe Upper, Car Upholstery, Sewing, Threads, etc
+          
+<BR>  <br>
+<b>Uncompromising Quality & Sourcing</b>: Our analysts maintain strict quality control from raw material procurement to final production. We source premium yarns—including POY, FDY, Bright, Semi-dull, Micro, and Cationic Dye-able—ranging from 30 to 650 Denier in over 1,500 shades.
+<BR>  
+<b>Advanced Infrastructure</b>: Our modern manufacturing unit is equipped with sophisticated machinery for texturising, TFO twisting, dyeing, winding, and packing. This robust setup also supports our upcoming expansion into new Textile and Medical Textiles, including non-woven products.
+<BR>  
+<b>Global Distribution</b>: An extensive network of experienced dealers, agents, and depots ensures we efficiently cater to customer requirements across India and internationally.</p>
+          <div class="about-features">
+            <div class="about-feat fade-up fade-up-d1">
+              <div class="feat-icon">🏭</div>
+              <div class="feat-text"><strong>Robust Infrastructure</strong><span>Advanced yarn manufacturing plant</span>
+              </div>
+            </div>
+            <div class="about-feat fade-up fade-up-d2">
+              <div class="feat-icon">🔬</div>
+              <div class="feat-text"><strong>Quality Assurance</strong><span>ISO tested, Grade 5 fastness</span></div>
+            </div>
+            <div class="about-feat fade-up fade-up-d3">
+              <div class="feat-icon">🚚</div>
+              <div class="feat-text"><strong>Distribution Network</strong><span>Worldwide Delivery</span></div>
+            </div>
+            <div class="about-feat fade-up fade-up-d4">
+              <div class="feat-icon">🤝</div>
+              <div class="feat-text"><strong>B2B Focus</strong><span>Reliable supply chain partner</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="customers-section">
+    <h2>Our Global Reach</h2>
+    <div class="flag-grid">
+      <div class="flag-item">
+        <img src="https://flagcdn.com/w80/br.png" alt="Brazil Flag">
+      </div>
+      <div class="flag-item">
+        <img src="https://flagcdn.com/w80/pe.png" alt="Peru Flag">
+      </div>
+      <div class="flag-item">
+        <img src="https://flagcdn.com/w80/co.png" alt="Colombia Flag">
+      </div>
+      <div class="flag-item">
+        <img src="https://flagcdn.com/w80/ar.png" alt="Argentina Flag">
+      </div>
+      <div class="flag-item">
+        <img src="https://flagcdn.com/w80/cl.png" alt="Chile Flag">
+      </div>
+      <div class="flag-item">
+        <img src="https://flagcdn.com/w80/py.png" alt="Paraguay Flag">
+      </div>
+      <div class="flag-item">
+        <img src="https://flagcdn.com/w80/bo.png" alt="Bolivia Flag">
+      </div>
+      <div class="flag-item">
+        <img src="https://flagcdn.com/w80/ec.png" alt="Ecuador Flag">
+      </div>
+      <div class="flag-item">
+        <img src="https://flagcdn.com/w80/uy.png" alt="Uruguay Flag">
+      </div>
+      <div class="flag-item">
+        <img src="https://flagcdn.com/w80/pl.png" alt="Poland Flag">
+      </div>
+      <div class="flag-item">
+        <img src="https://flagcdn.com/w80/hn.png" alt="Honduras Flag">
+      </div>
+      <div class="flag-item">
+        <img src="https://flagcdn.com/w80/ma.png" alt="Morocco Flag">
+      </div>
+    </div>
+  </section>
+
+  <section id="certification">
+    <div class="section-inner">
+      <div class="cert-layout">
+        <div class="cert-left fade-up">
+          <div class="section-eyebrow">Quality Assurance</div>
+          <h2 class="section-title" style="text-align:left;">Certified for<br><em>Compliance</em></h2>
+          <p>Our manufacturing processes are audited and tested against international Quality Standards. We deliver
+            industrial-grade yarn verified for strength, durability, and safety across all regulatory requirements.</p>
+
+        </div>
+        <div class="cert-grid" style="grid-template-columns: 1fr;">
+          <div class="cert-card fade-up fade-up-d1" onclick="openCert()" style="cursor:pointer;">
+            <div class="cert-icon">🏅</div>
+            <div class="cert-name">ISO 9001:2000</div>
+            <div class="cert-body">Quality Management System certified for the manufacturing and supply of polyester
+              yarns.</div>
+
+            <div style="margin-top: 1.5rem; display: flex; align-items: center; justify-content: space-between;">
+              <span class="cert-badge" style="margin-top: 0;">Quality Management</span>
+              <span style="font-size: 0.85rem; color: var(--gold); font-weight: 700;">Click here to view certificate
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="section-inner">
+      <div class="section-header fade-up" style="margin-bottom:3.5rem;">
+        <div class="section-eyebrow">Supplier Inquiries</div>
+        <h2 class="section-title"> Contact Us</h2>
+        <p class="section-desc">Submit your material requirements below. Our commercial team will respond within 24
+          hours with a comprehensive quote.</p>
+        <div class="divider"></div>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info fade-up">
+          <div class="contact-items">
+            <div class="contact-item">
+              <a href="https://maps.app.goo.gl/QUNHTtmSRFnE62sb6" target="_blank" class="contact-item-icon"
+                title="View on Google Maps" style="text-decoration:none; cursor:pointer; transition:all 0.3s;"
+                onmouseover="this.style.transform='scale(1.1)'; this.style.color='var(--gold2)';"
+                onmouseout="this.style.transform='scale(1)'; this.style.color='var(--gold)';">
+                <i class="fa-solid fa-location-dot"></i>
+              </a>
+              <div class="contact-item-body">
+                <strong>Corporate Office</strong>
+                <span>2028-29, Jash Textile & Yarn Market,<br>Ring Road, Surat-2, Gujarat, India<br>
+                  <a href="https://maps.app.goo.gl/QUNHTtmSRFnE62sb6" target="_blank"
+                    style="color: var(--gold); font-size: 0.85rem; font-weight: 600; text-decoration: underline; margin-top: 4px; display: inline-block;">View
+                    on Map <i class="fa-solid fa-arrow-up-right-from-square"></i></a></span>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-item-icon"><i class="fa-solid fa-phone"></i></div>
+              <div class="contact-item-body"><strong>Sales & Dispatch</strong><span>+91 98251 27951<br></span></div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-item-icon"><i class="fa-solid fa-envelope"></i></div>
+              <div class="contact-item-body"><strong>Email
+                  Correspondence</strong><span>neelamfibers@gmail.com<br>ashwin_patel88@yahoo.com</span></div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-item-icon"><i class="fa-regular fa-clock"></i></div>
+              <div class="contact-item-body"><strong>Operating Hours</strong><span>Mon – Sat: 9:30 AM – 6:30 PM
+                  IST<br>Sunday: Closed</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-form-wrap fade-up fade-up-d2">
+          <div class="form-title">Procurement Form</div>
+          <div class="form-sub">Provide your order details and we will route it to the appropriate sales desk.</div>
+          <form onsubmit="handleSubmit(event)">
+            <div class="form-row">
+              <div class="form-group"><label>Contact Name *</label><input type="text" placeholder="Full Name"
+                  required /></div>
+              <div class="form-group"><label>Company / Organization</label><input type="text"
+                  placeholder="Registered Company Name" /></div>
+            </div>
+            <div class="form-row">
+              <div class="form-group"><label>Phone / WhatsApp *</label><input type="tel" placeholder="+91 XXXXX XXXXX"
+                  required /></div>
+              <div class="form-group"><label>Business Email</label><input type="email"
+                  placeholder="purchasing@company.com" /></div>
+            </div>
+            <div class="form-row">
+              <div class="form-group form-full">
+                <label>Material Category *</label>
+                <select required>
+                  <option value="" selected>Select Material Required</option>
+                  <option style="color: black;">Polyester Semi Dull Yarn</option>
+                  <option style="color: black;">Polyester Bright Yarn</option>
+                  <option style="color: black;">Polyester Full Dull Yarn</option>
+                  <option style="color: black;">Polyester Twisted Yarn</option>
+                  <option style="color: black;">Polyester Doubler Yarn</option>
+                  <option style="color: black;">Polyester Space Dyed Yarn</option>
+                  <option style="color: black;">Multiple / Bulk Order Inquiry</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group form-full"><label>Order Specifications</label><textarea
+                  placeholder="Please detail denier, metric tonnes (MT), delivery port/location, and target timeline..."></textarea>
+              </div>
+            </div>
+            <button type="submit" class="form-submit">Submit Requirements</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer style="background: var(--navy2); border-top: 4px solid var(--gold); padding: 4rem 5% 2rem; color: #ffffff;">
+    <div class="footer-inner"
+      style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 2rem;">
+      <div class="footer-col" style="flex: 2; min-width: 250px;">
+        <div class="footer-logo-wrap" style="display: flex; align-items: center; gap: 12px; margin-bottom: 1rem;">
+          <img src="logo.png" alt="Logo" class="footer-logo-img"
+            style="height: 70px; border-radius: 2px; background: transparent; padding: 2px;"
+            onerror="this.style.display='none'">
+          <div class="footer-logo">
+            <div class="name"
+              style="font-family: 'Bremen Bold', sans-serif; font-size: 1.5rem; color: #ffffff; line-height: 1;">Neelam
+              Fibers</div>
+            <div class="tag"
+              style="font-size: 0.65rem; letter-spacing: 0.15em; color: #8AB4F8; text-transform: uppercase; margin-top: 4px;">
+              Since 1992</div>
+          </div>
+        </div>
+        <p style="font-size: 0.85rem; color: rgba(255,255,255,0.7); line-height: 1.6; max-width: 300px;">
+          Leading manufacturer of high-quality Polyester yarns. We deliver industrial-grade strength engineered for
+          diverse textile applications worldwide.
+        </p>
+      </div>
+
+      <div class="footer-col" style="flex: 1; min-width: 150px;">
+        <h4
+          style="font-size: 1.1rem; color: #8AB4F8; text-transform: uppercase; margin-bottom: 1.2rem; letter-spacing: 0.05em;">
+          Quick Links</h4>
+        <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.8rem; padding: 0;">
+          <li><a href="index.html#home"
+              style="color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Home</a>
+          </li>
+          <li><a href="index.html#products"
+              style="color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Products</a>
+          </li>
+          <li><a href="index.html#certification"
+              style="color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Certification</a>
+          </li>
+          <li><a href="blogs.html"
+              style="color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Blogs</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="footer-col" style="flex: 1.5; min-width: 200px;">
+        <h4
+          style="font-size: 1.1rem; color: #8AB4F8; text-transform: uppercase; margin-bottom: 1.2rem; letter-spacing: 0.05em;">
+          Contact Info</h4>
+        <ul style="list-style: none; display: flex; flex-direction: column; gap: 1rem; padding: 0;">
+          <li style="display: flex; gap: 12px; color: rgba(255,255,255,0.7); font-size: 0.85rem; line-height: 1.5;"><i
+              class="fa-solid fa-location-dot" style="color: var(--gold); margin-top: 4px; font-size: 1rem;"></i>
+            <span>2028-29, Jash Textile Market,<br>Ring Road, Surat-395002, Gujarat, India</span>
+          </li>
+          <li style="display: flex; gap: 12px; color: rgba(255,255,255,0.7); font-size: 0.85rem; line-height: 1.5;"><i
+              class="fa-solid fa-phone" style="color: var(--gold); margin-top: 4px; font-size: 1rem;"></i> <span>+91
+              98251 27951<br></span></li>
+          <li style="display: flex; gap: 12px; color: rgba(255,255,255,0.7); font-size: 0.85rem; line-height: 1.5;"><i
+              class="fa-solid fa-envelope" style="color: var(--gold); margin-top: 4px; font-size: 1rem;"></i>
+            <span>neelamfibers@gmail.com</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="footer-col" style="flex: 1; min-width: 150px;">
+        <h4
+          style="font-size: 1.1rem; color: #8AB4F8; text-transform: uppercase; margin-bottom: 1.2rem; letter-spacing: 0.05em;">
+          Follow Us</h4>
+        <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+          <a href="https://www.facebook.com/neelam.fibers/" target="_blank"
+            style="width: 40px; height: 40px; background: rgba(255,255,255,0.1); border-radius: 50%; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; text-decoration: none;"><i
+              class="fa-brands fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/neelam.fibers" target="_blank"
+            style="width: 40px; height: 40px; background: rgba(255,255,255,0.1); border-radius: 50%; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; text-decoration: none;"><i
+              class="fa-brands fa-instagram"></i></a>
+          <a href="https://www.linkedin.com/company/neelam-fibers/" target="_blank"
+            style="width: 40px; height: 40px; background: rgba(255,255,255,0.1); border-radius: 50%; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; text-decoration: none;"><i
+              class="fa-brands fa-linkedin-in"></i></a>
+          <a href="#" style="width: 40px; height: 40px; background: rgba(255,255,255,0.1); border-radius: 50%; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; text-decoration: none;"><i class="fa-brands fa-twitter"></i></a>
+        </div>
+      </div>
+    </div>
+    <div
+      style="margin-top: 4rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; max-width: 1200px; margin-left: auto; margin-right: auto;">
+      <div style="font-size: 0.8rem; color: rgba(255,255,255,0.4); font-weight: 500;">
+        © 2026 Neelam Fibers, Surat. All rights reserved.  |  Semi Dull · Bright · Full Dull · Twisted · Doubler
+      </div>
+      <div style="display: flex; gap: 15px; font-size: 0.85rem; align-items: center;">
+        <a href="mailto:neelamfibers@gmail.com"
+          style="color: rgba(255,255,255,0.6); text-decoration: none; display: flex; align-items: center; gap: 5px;"><i
+            class="fa-regular fa-envelope"></i> Email Us</a>
+        <span style="color: rgba(255,255,255,0.3);">|</span>
+        <a href="https://wa.me/919825127951" target="_blank"
+          style="color: #25D366; text-decoration: none; display: flex; align-items: center; gap: 5px;"><i
+            class="fa-brands fa-whatsapp"></i> WhatsApp Chat</a>
+      </div>
+    </div>
+  </footer>
+
+  <div id="certModal"
+    style="display:none; position:fixed; z-index:2000; left:0; top:0; width:100%; height:100%; background-color: var(--navy); align-items:center; justify-content:center;">
+    <div
+      style="position:relative; width:90%; max-width:600px; background:white; padding:10px; border-radius:4px; box-shadow:0 0 30px rgba(0,0,0,0.5); text-align:center;">
+      <span onclick="closeCert()"
+        style="position:absolute; top:-40px; right:0; color:white; font-size:30px; cursor:pointer; font-weight:bold;">×
+        CLOSE</span>
+      <img src="ISO.jpg" alt="ISO Certificate"
+        style="width:100%; height:auto; max-height:85vh; object-fit:contain; border-radius:2px; display:block;" />
+    </div>
+  </div>
+
+  <button id="wa-btn" class="whatsapp-btn" aria-label="Contact us on WhatsApp">
+    <svg viewBox="0 0 24 24" width="30" height="30" fill="white">
+      <path
+        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+    </svg>
+  </button>
+  <div id="wa-popup" class="whatsapp-popup hidden">
+    <div class="popup-header"><span>Supplier Direct Line</span><button id="close-btn" class="close-btn">×</button></div>
+    <div class="popup-body">
+      <p>Connect with our commercial team for quotes, bulk pricing, or product specifications.</p>
+      <a href="https://wa.me/919825127951?text=Hello,%20I%20am%20interested%20in%20Neelam%20Fibers%20and%20would%20request%20to%20send%20the%20details"
+        target="_blank" class="start-chat-btn">Contact on WhatsApp</a>
+    </div>
+  </div>
+
+  <div id="google_translate_element"></div>
+
+  <script>
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 60); });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    function openMobileNav() { document.getElementById('mobileNav').classList.add('open'); }
+    function closeMobileNav() { document.getElementById('mobileNav').classList.remove('open'); }
+
+    function handleSubmit(e) {
+      e.preventDefault();
+      alert('Requirements submitted successfully. Our commercial team will contact you within 24 hours.');
+      e.target.reset();
+    }
+
+    function openCert() { document.getElementById('certModal').style.display = 'flex'; document.body.style.overflow = 'hidden'; }
+    function closeCert() { document.getElementById('certModal').style.display = 'none'; document.body.style.overflow = 'auto'; }
+    window.onclick = function (event) {
+      const modal = document.getElementById('certModal');
+      if (event.target == modal) { closeCert(); }
+    }
+
+    const waBtn = document.getElementById("wa-btn");
+    const waPopup = document.getElementById("wa-popup");
+    const closeBtn = document.getElementById("close-btn");
+    if (waBtn && waPopup && closeBtn) {
+      waBtn.addEventListener("click", () => { waPopup.classList.toggle("hidden"); });
+      closeBtn.addEventListener("click", () => { waPopup.classList.add("hidden"); });
+    }
+
+    // --- CUSTOM TRANSLATE LOGIC ---
+    document.addEventListener("DOMContentLoaded", () => {
+      const langBtn = document.getElementById('custom-lang-btn');
+      const langDropdown = document.getElementById('custom-lang-dropdown');
+      const langSearch = document.getElementById('custom-lang-search');
+      const langItems = document.querySelectorAll('.b2b-lang-list li');
+      const activeLangSpan = document.getElementById('active-lang');
+
+      // 1. RESTORE UI STATE FROM PREVIOUS PAGE
+      const savedLangName = localStorage.getItem('b2bLangName');
+      if (savedLangName) {
+        activeLangSpan.textContent = savedLangName;
+      }
+
+      // Toggle dropdown open/close
+      langBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        langDropdown.classList.toggle('show');
+        if (langDropdown.classList.contains('show')) {
+          langSearch.focus();
+        }
+      });
+
+      // Close dropdown when clicking outside
+      document.addEventListener('click', (e) => {
+        if (!langDropdown.contains(e.target) && e.target !== langBtn) {
+          langDropdown.classList.remove('show');
+        }
+      });
+
+      // Search/Filter functionality
+      langSearch.addEventListener('input', (e) => {
+        const filterTerm = e.target.value.toLowerCase();
+        langItems.forEach(item => {
+          const text = item.textContent.toLowerCase();
+          item.style.display = text.includes(filterTerm) ? '' : 'none';
+        });
+      });
+
+      // Handle language selection click
+      langItems.forEach(item => {
+        item.addEventListener('click', () => {
+          const langCode = item.getAttribute('data-lang');
+          const langName = item.textContent.split(' (')[0];
+
+          const googleSelect = document.querySelector('.goog-te-combo');
+          if (googleSelect) {
+            // Trigger the Google translation
+            googleSelect.value = langCode;
+            googleSelect.dispatchEvent(new Event('change'));
+
+            // Update the button text instantly
+            activeLangSpan.textContent = langName;
+
+            // 2. FORCE TRANSLATION PERSISTENCE ACROSS THE ENTIRE WEBSITE
+            document.cookie = `googtrans=/en/${langCode}; path=/;`;
+            if (window.location.hostname) {
+              document.cookie = `googtrans=/en/${langCode}; domain=${window.location.hostname}; path=/;`;
+            }
+
+            // Save the button text to local storage so it stays when you click a new link
+            localStorage.setItem('b2bLangName', langName);
+          }
+
+          // Hide dropdown and reset search
+          langDropdown.classList.remove('show');
+          langSearch.value = '';
+          langItems.forEach(li => li.style.display = '');
+        });
+      });
+    });
+  </script>
+
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        autoDisplay: false
+      }, 'google_translate_element');
+    }
+  </script>
+  <script type="text/javascript"
+    src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+
+</html>
